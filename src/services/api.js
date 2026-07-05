@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://taskflow-backend-4bf2.onrender.com'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://taskflow-backend-4bf2.onrender.com/api'
 const API_ORIGIN = API_BASE_URL.replace(/\/api\/?$/, '')
 
 export const api = axios.create({
