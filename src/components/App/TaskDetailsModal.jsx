@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { FiDownload, FiPaperclip, FiSend, FiTrash2 } from 'react-icons/fi'
 
-import { getApiErrorMessage } from '../../services/api'
+import { getApiErrorMessage, getAssetUrl } from '../../services/api'
 import { taskService } from '../../services/taskService'
 import { formatDate, formatEnum } from '../../utils/formatters'
 import { Button } from '../ui/Button'
@@ -162,7 +162,7 @@ export function TaskDetailsModal({ task, isOpen, onClose, onChanged, showToast }
                   </div>
                   <div className="flex gap-2">
                     <Button asChild variant="outline" size="icon" aria-label="Download attachment">
-                      <a href={`http://localhost:8081${item.fileUrl}`} download>
+                      <a href={getAssetUrl(item.fileUrl)} download>
                         <FiDownload className="h-4 w-4" />
                       </a>
                     </Button>
