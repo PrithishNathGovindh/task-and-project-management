@@ -53,11 +53,20 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtAuthenticationEntryPoint))
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.POST, "/api/auth/register", "/api/auth/login").permitAll()
-                .requestMatchers(HttpMethod.GET, "/uploads/attachments/**").permitAll()
-                .anyRequest().authenticated()
-            )
+           .authorizeHttpRequests(auth -> auth
+    .requestMatchers(
+        HttpMethod.POST,
+        "/api/auth/register",
+        "/api/auth/login"
+    ).permitAll()
+
+    .requestMatchers(
+        HttpMethod.GET,
+        "/uploads/attachments/**"
+    ).permitAll()
+
+    .anyRequest().authenticated()
+)
             .authenticationProvider(authenticationProvider())
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
             .build();
